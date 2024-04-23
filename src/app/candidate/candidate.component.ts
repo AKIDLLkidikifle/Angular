@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MasterService } from '../service/master.service';
-import { ProductModel } from '../model/product.model';
+import { CandidateModel } from '../model/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,9 +10,9 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './candidate.component.css'
 })
 export class CandidateComponent {
-  productlist!: ProductModel[];
+  productlist!: CandidateModel[];
   datasource: any;
-  editdata!: ProductModel;
+  editdata!: CandidateModel;
   displayedColums: string[] = ['id', 'name', 'department', 'salary', 'action']
 
   isadd = false;
@@ -24,7 +24,7 @@ export class CandidateComponent {
   title = 'xoca challenge';
 
   loadproductlist() {
-    this.serice.getallproducts().subscribe(item => {
+    this.serice.getallcandidates().subscribe(item => {
       this.productlist = item;
       this.datasource = new MatTableDataSource(this.productlist);
     });
@@ -33,19 +33,19 @@ export class CandidateComponent {
   productform = this.builder.group({
     id: this.builder.control({ value: 0, disabled: true }),
     name: this.builder.control('', Validators.required),
-    department: this.builder.control(''),
-    salary: this.builder.control(0)
+    departmentId: this.builder.control(0),
+    companyId: this.builder.control(0)
   })
   Saveproduct() {
     if (this.productform.valid) {
-      const _obj: ProductModel = {
+      const _obj: CandidateModel = {
         id: this.productform.value.id as number,
         name: this.productform.value.name as string,
-        department: this.productform.value.department as string,
-        salary: this.productform.value.salary as number
+        departmentId: this.productform.value.departmentId as number,
+        companyId: this.productform.value.companyId as number
       }
       if (this.isadd) {
-        this.serice.Createproduct(_obj).subscribe(item => {
+        this.serice.Createcandidate(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -53,7 +53,7 @@ export class CandidateComponent {
         });
       }else{
         _obj.id=this.productform.getRawValue().id as number;
-        this.serice.Updateproduct(_obj).subscribe(item => {
+        this.serice.Updatecandidate(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -64,15 +64,15 @@ export class CandidateComponent {
   }
 
   editproduct(id: number) {
-    this.serice.Getproduct(id).subscribe(item => {
+    this.serice.Getcandidate(id).subscribe(item => {
       this.editdata = item;
-      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, department: this.editdata.department, salary: this.editdata.salary });
+      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, departmentId: this.editdata.departmentId, companyId: this.editdata.companyId });
       this.isedit = true;
     })
   }
   removeproduct(id: number){
     if(confirm('Confirm to remove?')){
-      this.serice.Deleteproduct(id).subscribe(item => {
+      this.serice.Deletecandidate(id).subscribe(item => {
         this.loadproductlist();
       })
     }

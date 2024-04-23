@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MasterService } from '../service/master.service';
-import { ProductModel } from '../model/product.model';
+import { EmployeeModel } from '../model/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,9 +10,9 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './employee.component.css'
 })
 export class EmployeeComponent {
-  productlist!: ProductModel[];
+  productlist!: EmployeeModel[];
   datasource: any;
-  editdata!: ProductModel;
+  editdata!: EmployeeModel;
   displayedColums: string[] = ['id', 'name', 'department', 'salary', 'action']
 
   isadd = false;
@@ -38,7 +38,7 @@ export class EmployeeComponent {
   })
   Saveproduct() {
     if (this.productform.valid) {
-      const _obj: ProductModel = {
+      const _obj: EmployeeModel = {
         id: this.productform.value.id as number,
         name: this.productform.value.name as string,
         department: this.productform.value.department as string,

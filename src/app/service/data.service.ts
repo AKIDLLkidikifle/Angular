@@ -10,7 +10,7 @@ export class DataService implements InMemoryDbService {
   constructor() { }
   createDb(): {} | Observable<{}>  {
     return {
-      products: [
+      employees: [
         {
           id: 1,
           name: 'Kidist Amare',
@@ -30,26 +30,78 @@ export class DataService implements InMemoryDbService {
           salary: 30
         }
       ],
-      products1: [
+      candidates: [
         {
           id: 1,
           name: 'Kalkidan Dagnachew',
-          department: 'computer engineering ',
-          salary: 40
+          departmentId: 2,
+          companyId: 1
         },
         {
           id: 2,
           name: 'Meron Tesema',
-          department: 'computer science ',
-          salary: 80
+          departmentId: 2,
+          companyId: 1
         },
         {
           id: 4,
           name: 'Betelhem Lemma',
-          department: 'Chemical engineering',
-          salary: 30
+          departmentId: 2,
+          companyId: 1
         }
       ]
+
+      // company: [
+      //   {
+      //     id: 1,
+      //     name: 'Kalkidan Dagnachew',
+      //     address: 'Addis Abeba ',
+      //     website: "www.addis.com"
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Meron Tesema',
+      //     address: 'Addis Abeba ',
+      //     website: "www.addis.com"
+      //   },
+      //   {
+      //     id: 4,
+      //     name: 'Betelhem Lemma',
+      //     address: 'Addis Abeba ',
+      //     website: "www.addis.com"
+      //   }
+      // ],
+
+      // department: [
+      //   {
+      //     id: 1,
+      //     name: 'Kalkidan Dagnachew',
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Meron Tesema',
+      //   },
+      //   {
+      //     id: 4,
+      //     name: 'Betelhem Lemma',
+      //   }
+      // ],
+
+      // salary: [
+      //   {
+      //     id: 1,
+      //     amount: 30,000,
+
+      //   },
+      //   {
+      //     id: 2,
+      //     amount: 30,000,
+      //   },
+      //   {
+      //     id: 4,
+      //     amount: 30,000,
+      //   }
+      // ]
     };
   }
 }
