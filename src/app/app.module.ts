@@ -13,10 +13,25 @@ import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { EmployeeComponent } from './employee/employee.component';
+import { MenubarComponent } from './menubar/menubar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { CandidateComponent } from './candidate/candidate.component';
+import { CompanyComponent } from './company/company.component';
+import { DepartmentComponent } from './department/department.component';
+import { SalaryComponent } from './salary/salary.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmployeeComponent,
+    MenubarComponent,
+    CandidateComponent,
+    CompanyComponent,
+    DepartmentComponent,
+    SalaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +44,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync()

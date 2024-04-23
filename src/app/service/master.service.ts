@@ -7,7 +7,7 @@ import { ProductModel } from '../model/product.model';
 })
 export class MasterService {
 
-  private productsUrl = 'api/products1/';
+  private productsUrl = 'api/products/';
   constructor(private http: HttpClient) { }
 
   getallproducts() {
