@@ -13,7 +13,7 @@ export class AppComponent {
   productlist!: ProductModel[];
   datasource: any;
   editdata!: ProductModel;
-  displayedColums: string[] = ['id', 'name', 'description', 'price', 'action']
+  displayedColums: string[] = ['id', 'name', 'department', 'salary', 'action']
 
   isadd = false;
   isedit = false;
@@ -21,7 +21,7 @@ export class AppComponent {
   constructor(private serice: MasterService, private builder: FormBuilder) {
     this.loadproductlist();
   }
-  title = 'Testapp1';
+  title = 'xoca challenge';
 
   loadproductlist() {
     this.serice.getallproducts().subscribe(item => {
@@ -33,16 +33,16 @@ export class AppComponent {
   productform = this.builder.group({
     id: this.builder.control({ value: 0, disabled: true }),
     name: this.builder.control('', Validators.required),
-    description: this.builder.control(''),
-    price: this.builder.control(0)
+    department: this.builder.control(''),
+    salary: this.builder.control(0)
   })
   Saveproduct() {
     if (this.productform.valid) {
       const _obj: ProductModel = {
         id: this.productform.value.id as number,
         name: this.productform.value.name as string,
-        description: this.productform.value.description as string,
-        price: this.productform.value.price as number
+        department: this.productform.value.department as string,
+        salary: this.productform.value.salary as number
       }
       if (this.isadd) {
         this.serice.Createproduct(_obj).subscribe(item => {
@@ -66,7 +66,7 @@ export class AppComponent {
   editproduct(id: number) {
     this.serice.Getproduct(id).subscribe(item => {
       this.editdata = item;
-      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, description: this.editdata.description, price: this.editdata.price });
+      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, department: this.editdata.department, salary: this.editdata.salary });
       this.isedit = true;
     })
   }

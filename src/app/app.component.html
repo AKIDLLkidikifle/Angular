@@ -17,13 +17,13 @@
           <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let element">{{element.name}}</td>
       </ng-container>
-      <ng-container matColumnDef="description">
+      <ng-container matColumnDef="department">
           <th mat-sort-header mat-header-cell *matHeaderCellDef>Department</th>
-          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+          <td mat-cell *matCellDef="let element">{{element.department}}</td>
       </ng-container>
-      <ng-container matColumnDef="price">
-          <th mat-sort-header mat-header-cell *matHeaderCellDef>Salary</th>
-          <td mat-cell *matCellDef="let element">{{element.price | currency}}</td>
+      <ng-container matColumnDef="salary">
+          <th mat-sort-header mat-header-cell *matHeaderCellDef>salary</th>
+          <td mat-cell *matCellDef="let element">{{element.salary | currency}}</td>
       </ng-container>
       <ng-container matColumnDef="action">
         <th mat-sort-header mat-header-cell *matHeaderCellDef>Action</th>
@@ -54,11 +54,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Department</mat-label>
-        <input formControlName="description" matInput>
+        <input formControlName="department" matInput>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Salary</mat-label>
-        <input formControlName="price" matInput>
+        <mat-label>salary</mat-label>
+        <input formControlName="salary" matInput>
       </mat-form-field>
 
 
