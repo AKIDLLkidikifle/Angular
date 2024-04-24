@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { EmployeeModel } from '../model/product.model';
 
 import { CandidateModel } from '../model/product.model';
-// import { CompanyModel } from '../model/product.model';
+import { CompanyModel } from '../model/product.model';
 // import { DepartmentModel } from '../model/product.model';
 // import { SalaryModel } from '../model/product.model';
 
@@ -15,12 +15,12 @@ export class MasterService {
   private apiUrl = 'api/';
   private productsUrl = 'employees/';
   private candidatesUrl = 'candidates/';
-  // private companysUrl = 'api/company/';
-  // private departmentsUrl = 'api/department/';
-  // private salaryUrl = 'api/salary/';  
+  private companysUrl = 'company/';
+  // private departmentsUrl = 'department/';
+  // private salaryUrl = 'salary/';  
 
   constructor(private http: HttpClient) { }
-
+  //product
   getallproducts() {
     return this.http.get<EmployeeModel[]>(this.apiUrl + this.productsUrl);
   }
@@ -41,7 +41,28 @@ export class MasterService {
     return this.http.get<EmployeeModel>(this.apiUrl + this.productsUrl+productid);
   }
 
+  //company
+  getallcompany() {
+    return this.http.get<CompanyModel[]>(this.apiUrl + this.companysUrl);
+  }
+  
+  Createcompany(inputdata: CompanyModel) {
+    return this.http.post(this.apiUrl + this.companysUrl, inputdata);  
+  }
 
+  Updatecompany(inputdata: CompanyModel) {
+    return this.http.put(this.apiUrl + this.companysUrl+inputdata.id, inputdata);    
+  }
+
+  Deletecompany(companyid: number) {
+    return this.http.delete(this.apiUrl + this.companysUrl+companyid);    
+  }
+
+  Getcompany(companyid: number) {
+    return this.http.get<CompanyModel>(this.apiUrl + this.companysUrl+companyid);   
+  }
+
+  //candidate
   getallcandidates(){
     return this.http.get<CandidateModel[]>(this.apiUrl + this.candidatesUrl);    
   }

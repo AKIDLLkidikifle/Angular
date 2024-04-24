@@ -49,28 +49,28 @@ export class DataService implements InMemoryDbService {
           departmentId: 2,
           companyId: 1
         }
-      ]
+      ],
 
-      // company: [
-      //   {
-      //     id: 1,
-      //     name: 'Kalkidan Dagnachew',
-      //     address: 'Addis Abeba ',
-      //     website: "www.addis.com"
-      //   },
-      //   {
-      //     id: 2,
-      //     name: 'Meron Tesema',
-      //     address: 'Addis Abeba ',
-      //     website: "www.addis.com"
-      //   },
-      //   {
-      //     id: 4,
-      //     name: 'Betelhem Lemma',
-      //     address: 'Addis Abeba ',
-      //     website: "www.addis.com"
-      //   }
-      // ],
+      company: [
+        {
+          id: 1,
+          name: 'Kalkidan Dagnachew',
+          address: 'Addis Abeba ',
+          website: "www.addis.com"
+        },
+        {
+          id: 2,
+          name: 'Meron Tesema',
+          address: 'Addis Abeba ',
+          website: "www.addis.com"
+        },
+        {
+          id: 4,
+          name: 'Betelhem Lemma',
+          address: 'Addis Abeba ',
+          website: "www.addis.com"
+        }
+      ],
 
       // department: [
       //   {

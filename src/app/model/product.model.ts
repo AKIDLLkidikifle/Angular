@@ -13,12 +13,12 @@ export interface CandidateModel {
 }
 
 // // company.model.ts
-// export interface CompanyModel {
-//     id: number;
-//     name: string;
-//     address: string;
-//     website: string;
-// }
+export interface CompanyModel {
+    id: number;
+    name: string;
+    address: string;
+    website: string;
+}
 
 // department.model.ts
 // export interface DepartmentModel {
