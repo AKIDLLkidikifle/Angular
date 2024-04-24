@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MasterService } from '../service/master.service';
-import { EmployeeModel } from '../model/product.model';
+import { SalaryModel } from '../model/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,10 +10,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './salary.component.css'
 })
 export class SalaryComponent {
-  productlist!: EmployeeModel[];
+  productlist!: SalaryModel[];
   datasource: any;
-  editdata!: EmployeeModel;
-  displayedColums: string[] = ['id', 'name', 'department', 'salary', 'action']
+  editdata!: SalaryModel;
+  displayedColums: string[] = ['id',  'salary', 'action']
 
   isadd = false;
   isedit = false;
@@ -24,7 +24,7 @@ export class SalaryComponent {
   title = 'xoca challenge';
 
   loadproductlist() {
-    this.serice.getallproducts().subscribe(item => {
+    this.serice.getallsalary().subscribe(item => {
       this.productlist = item;
       this.datasource = new MatTableDataSource(this.productlist);
     });
@@ -32,20 +32,16 @@ export class SalaryComponent {
 
   productform = this.builder.group({
     id: this.builder.control({ value: 0, disabled: true }),
-    name: this.builder.control('', Validators.required),
-    department: this.builder.control(''),
     salary: this.builder.control(0)
   })
   Saveproduct() {
     if (this.productform.valid) {
-      const _obj: EmployeeModel = {
+      const _obj: SalaryModel = {
         id: this.productform.value.id as number,
-        name: this.productform.value.name as string,
-        department: this.productform.value.department as string,
-        salary: this.productform.value.salary as number
+        amount: this.productform.value.salary as number
       }
       if (this.isadd) {
-        this.serice.Createproduct(_obj).subscribe(item => {
+        this.serice.Createsalary(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -53,7 +49,7 @@ export class SalaryComponent {
         });
       }else{
         _obj.id=this.productform.getRawValue().id as number;
-        this.serice.Updateproduct(_obj).subscribe(item => {
+        this.serice.Updatesalary(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -64,15 +60,15 @@ export class SalaryComponent {
   }
 
   editproduct(id: number) {
-    this.serice.Getproduct(id).subscribe(item => {
+    this.serice.Getsalary(id).subscribe(item => {
       this.editdata = item;
-      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, department: this.editdata.department, salary: this.editdata.salary });
+      this.productform.setValue({ id: this.editdata.id,  salary: this.editdata.amount });
       this.isedit = true;
     })
   }
   removeproduct(id: number){
     if(confirm('Confirm to remove?')){
-      this.serice.Deleteproduct(id).subscribe(item => {
+      this.serice.Deletesalary(id).subscribe(item => {
         this.loadproductlist();
       })
     }

@@ -21,13 +21,13 @@ export interface CompanyModel {
 }
 
 // department.model.ts
-// export interface DepartmentModel {
-//     id: number;
-//     name: string;
-//   }
+export interface DepartmentModel {
+    id: number;
+    name: string;
+  }
   
-  // salary.model.ts
-//   export interface SalaryModel {
-//     id: number;
-//     amount: number;
-//   }
+// salary.model.ts
+  export interface SalaryModel {
+    id: number;
+    amount: number;
+  }

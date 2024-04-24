@@ -72,36 +72,35 @@ export class DataService implements InMemoryDbService {
         }
       ],
 
-      // department: [
-      //   {
-      //     id: 1,
-      //     name: 'Kalkidan Dagnachew',
-      //   },
-      //   {
-      //     id: 2,
-      //     name: 'Meron Tesema',
-      //   },
-      //   {
-      //     id: 4,
-      //     name: 'Betelhem Lemma',
-      //   }
-      // ],
+      department: [
+        {
+          id: 1,
+          name: 'Kalkidan Dagnachew',
+        },
+        {
+          id: 2,
+          name: 'Meron Tesema',
+        },
+        {
+          id: 4,
+          name: 'Betelhem Lemma',
+        }
+      ],
 
-      // salary: [
-      //   {
-      //     id: 1,
-      //     amount: 30,000,
-
-      //   },
-      //   {
-      //     id: 2,
-      //     amount: 30,000,
-      //   },
-      //   {
-      //     id: 4,
-      //     amount: 30,000,
-      //   }
-      // ]
+      salary: [
+        {
+          id: 1,
+          amount: 30 ,
+        },
+        {
+          id: 2,
+          amount: 30,
+        },
+        {
+          id: 4,
+          amount: 30 ,
+        }
+      ]
     };
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MasterService } from '../service/master.service';
-import { EmployeeModel } from '../model/product.model';
+import { DepartmentModel } from '../model/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,10 +10,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './department.component.css'
 })
 export class DepartmentComponent {
-  productlist!: EmployeeModel[];
+  productlist!: DepartmentModel[];
   datasource: any;
-  editdata!: EmployeeModel;
-  displayedColums: string[] = ['id', 'name', 'department', 'salary', 'action']
+  editdata!: DepartmentModel;
+  displayedColums: string[] = ['id', 'name', 'action']
 
   isadd = false;
   isedit = false;
@@ -24,7 +24,7 @@ export class DepartmentComponent {
   title = 'xoca challenge';
 
   loadproductlist() {
-    this.serice.getallproducts().subscribe(item => {
+    this.serice.getalldepartment().subscribe(item => {
       this.productlist = item;
       this.datasource = new MatTableDataSource(this.productlist);
     });
@@ -32,20 +32,20 @@ export class DepartmentComponent {
 
   productform = this.builder.group({
     id: this.builder.control({ value: 0, disabled: true }),
-    name: this.builder.control('', Validators.required),
-    department: this.builder.control(''),
-    salary: this.builder.control(0)
+    name: this.builder.control('', Validators.required)
+    // department: this.builder.control(''),
+    // salary: this.builder.control(0)
   })
   Saveproduct() {
     if (this.productform.valid) {
-      const _obj: EmployeeModel = {
+      const _obj: DepartmentModel = {
         id: this.productform.value.id as number,
         name: this.productform.value.name as string,
-        department: this.productform.value.department as string,
-        salary: this.productform.value.salary as number
+        // department: this.productform.value.department as string,
+        // salary: this.productform.value.salary as number
       }
       if (this.isadd) {
-        this.serice.Createproduct(_obj).subscribe(item => {
+        this.serice.Createdepartment(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -53,7 +53,7 @@ export class DepartmentComponent {
         });
       }else{
         _obj.id=this.productform.getRawValue().id as number;
-        this.serice.Updateproduct(_obj).subscribe(item => {
+        this.serice.Updatedepartment(_obj).subscribe(item => {
           this.loadproductlist();
           this.isadd = false;
           this.isedit = false;
@@ -64,15 +64,15 @@ export class DepartmentComponent {
   }
 
   editproduct(id: number) {
-    this.serice.Getproduct(id).subscribe(item => {
+    this.serice.Getdepartment(id).subscribe(item => {
       this.editdata = item;
-      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name, department: this.editdata.department, salary: this.editdata.salary });
+      this.productform.setValue({ id: this.editdata.id, name: this.editdata.name });
       this.isedit = true;
     })
   }
   removeproduct(id: number){
     if(confirm('Confirm to remove?')){
-      this.serice.Deleteproduct(id).subscribe(item => {
+      this.serice.Deletedepartment(id).subscribe(item => {
         this.loadproductlist();
       })
     }

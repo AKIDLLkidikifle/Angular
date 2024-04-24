@@ -4,8 +4,8 @@ import { EmployeeModel } from '../model/product.model';
 
 import { CandidateModel } from '../model/product.model';
 import { CompanyModel } from '../model/product.model';
-// import { DepartmentModel } from '../model/product.model';
-// import { SalaryModel } from '../model/product.model';
+import { DepartmentModel } from '../model/product.model';
+import { SalaryModel } from '../model/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class MasterService {
   private productsUrl = 'employees/';
   private candidatesUrl = 'candidates/';
   private companysUrl = 'company/';
-  // private departmentsUrl = 'department/';
-  // private salaryUrl = 'salary/';  
+  private departmentsUrl = 'department/';
+  private salaryUrl = 'salary/';  
 
   constructor(private http: HttpClient) { }
   //product
@@ -39,6 +39,47 @@ export class MasterService {
 
   Getproduct(productid: number) {
     return this.http.get<EmployeeModel>(this.apiUrl + this.productsUrl+productid);
+  }
+
+  getallsalary() {
+    return this.http.get<SalaryModel[]>(this.apiUrl + this.salaryUrl);    
+  }
+
+  Createsalary(inputdata: SalaryModel) {
+    return this.http.post(this.apiUrl + this.salaryUrl, inputdata);    
+  }
+
+  Updatesalary(inputdata: SalaryModel) {
+    return this.http.put(this.apiUrl + this.salaryUrl+inputdata.id, inputdata);    
+  }
+
+  Deletesalary(salaryid: number) {
+    return this.http.delete(this.apiUrl + this.salaryUrl+salaryid);    
+  }
+
+  Getsalary(salaryid: number) {
+    return this.http.get<SalaryModel>(this.apiUrl + this.salaryUrl+salaryid);    
+  }
+
+  //department
+  getalldepartment() {
+    return this.http.get<DepartmentModel[]>(this.apiUrl + this.departmentsUrl);    
+  }
+
+  Createdepartment(inputdata: DepartmentModel) {
+    return this.http.post(this.apiUrl + this.departmentsUrl, inputdata);    
+  }
+
+  Updatedepartment(inputdata: DepartmentModel) {
+    return this.http.put(this.apiUrl + this.departmentsUrl+inputdata.id, inputdata);    
+  }
+
+  Deletedepartment(departmentid: number) {
+    return this.http.delete(this.apiUrl + this.departmentsUrl+departmentid);    
+  }
+
+  Getdepartment(departmentid: number) {
+    return this.http.get<DepartmentModel>(this.apiUrl + this.departmentsUrl+departmentid);    
   }
 
   //company
