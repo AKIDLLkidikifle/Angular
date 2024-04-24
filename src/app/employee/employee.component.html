@@ -1,7 +1,7 @@
 
 <mat-card>
     <mat-card-header>
-      <button style="margin: 2px;" mat-raised-button color="primary" (click)="addproduct()"><mat-icon>add</mat-icon></button>
+      <button style="margin: 2px;" mat-raised-button color="primary" (click)="addproduct()">Add Employee</button>
     </mat-card-header>
     <mat-card-content>
   
@@ -22,8 +22,8 @@
             <td mat-cell *matCellDef="let element">{{element.department}}</td>
         </ng-container>
         <ng-container matColumnDef="salary">
-            <th mat-sort-header mat-header-cell *matHeaderCellDef>salary Id</th>
-            <td mat-cell *matCellDef="let element">{{element.salary | currency}}</td>
+            <th mat-sort-header mat-header-cell *matHeaderCellDef>Salary Id</th>
+            <td mat-cell *matCellDef="let element">{{element.salary}}</td>
         </ng-container>
         <ng-container matColumnDef="action">
           <th mat-sort-header mat-header-cell *matHeaderCellDef>Action</th>
@@ -53,11 +53,11 @@
           <input formControlName="name" matInput>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Department</mat-label>
+          <mat-label>Department Id</mat-label>
           <input formControlName="department" matInput>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>salary</mat-label>
+          <mat-label>Salary Id</mat-label>
           <input formControlName="salary" matInput>
         </mat-form-field>
   

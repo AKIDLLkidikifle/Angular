@@ -14,20 +14,20 @@ export class DataService implements InMemoryDbService {
         {
           id: 1,
           name: 'Kidist Amare',
-          department: 'computer engineer',
-          salary: 40
+          department: 2,
+          salary: 2
         },
         {
           id: 2,
           name: 'Betelhem Dagnachew',
-          department: 'computer science ',
-          salary: 80
+          department: 3,
+          salary: 1
         },
         {
           id: 3,
           name: 'Mastewal Tesfa',
-          department: 'cheical engieer',
-          salary: 30
+          department: 1,
+          salary: 2
         }
       ],
       candidates: [
@@ -54,36 +54,36 @@ export class DataService implements InMemoryDbService {
       company: [
         {
           id: 1,
-          name: 'Kalkidan Dagnachew',
+          name: 'Addis software',
           address: 'Addis Abeba ',
-          website: "www.addis.com"
+          website: "https://addissoftware.com/"
         },
         {
           id: 2,
-          name: 'Meron Tesema',
+          name: 'MMC Y tech',
           address: 'Addis Abeba ',
-          website: "www.addis.com"
+          website: "https://mmcytech.com/"
         },
         {
           id: 4,
-          name: 'Betelhem Lemma',
+          name: 'Zala Tech',
           address: 'Addis Abeba ',
-          website: "www.addis.com"
+          website: "https://zalatechs.com/"
         }
       ],
 
       department: [
         {
           id: 1,
-          name: 'Kalkidan Dagnachew',
+          name: 'computer engineering',
         },
         {
           id: 2,
-          name: 'Meron Tesema',
+          name: 'software enginneering',
         },
         {
           id: 4,
-          name: 'Betelhem Lemma',
+          name: 'computer science',
         }
       ],
 
